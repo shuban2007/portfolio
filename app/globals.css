@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  body {
+    @apply bg-background text-text-primary antialiased w-full overflow-x-hidden relative min-h-screen z-0;
+    cursor: none; /* Custom cursor is enabled */
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  ::selection {
+    @apply bg-accent/30 text-accent;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Base custom cursor rule for devices that support hover */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Soft amber bloom behind card */
+  .glow-amber {
+    box-shadow: 0 0 20px rgba(240, 165, 0, 0.15);
+  }
+  
+  .glow-amber-strong {
+    box-shadow: 0 0 24px rgba(240, 165, 0, 0.4);
+  }
+
+  .shimmer-mask {
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  }
+}
+
+/* Disable custom cursor on mobile */
+@media screen and (max-width: 768px) {
+  .custom-cursor {
+    display: none !important;
   }
 }
