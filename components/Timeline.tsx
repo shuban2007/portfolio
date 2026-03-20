@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { IconPlus, IconMinus, IconArrowRight } from "@tabler/icons-react";
+import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
+import { IconPlus, IconMinus, IconCheck } from "@tabler/icons-react";
 
 const phases = [
   {
@@ -64,16 +64,28 @@ const phases = [
 ];
 
 const summaryStages = [
-  "Beginner",
-  "Learner",
-  "Builder with AI",
-  "Engineer",
-  "AI-Native Product Creator"
+  { label: "Beginner", targetId: 1 },
+  { label: "Learner", targetId: 2 },
+  { label: "Builder with AI", targetId: 4 },
+  { label: "Engineer", targetId: 5 },
+  { label: "AI-Native Product Creator", targetId: 7 }
 ];
 
 export default function Timeline() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const isSummaryInView = useInView(summaryRef, { once: true, margin: "-100px" });
+  const [flashingId, setFlashingId] = useState<number | null>(null);
+
+  const handleScrollToPhase = (id: number) => {
+    const el = document.getElementById(`phase-${id}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setFlashingId(id);
+      setTimeout(() => setFlashingId(null), 1500);
+    }
+  };
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -130,8 +142,11 @@ export default function Timeline() {
 
                 {/* Card */}
                 <motion.div
-                  className="w-[calc(100%-4rem)] ml-auto md:ml-0 md:w-[45%] bg-[#1A1E14] border border-accent/20 rounded-sm p-6 md:p-8 cursor-pointer relative"
-                  whileHover={{ y: -4, boxShadow: "0 0 15px rgba(251,191,36,0.1)" }}
+                  id={`phase-${phase.id}`}
+                  className={`w-[calc(100%-4rem)] ml-auto md:ml-0 md:w-[45%] bg-[#1A1E14] border rounded-sm p-6 md:p-8 cursor-pointer relative transition-colors duration-500 ${
+                    flashingId === phase.id ? "border-accent shadow-[0_0_30px_rgba(251,191,36,0.4)]" : "border-accent/20"
+                  }`}
+                  whileHover={{ y: -4, boxShadow: flashingId === phase.id ? "0 0 30px rgba(251,191,36,0.4)" : "0 0 15px rgba(251,191,36,0.1)" }}
                   onClick={() => setExpandedId(isExpanded ? null : phase.id)}
                 >
                   <div className="absolute top-6 right-6 text-accent">
@@ -159,7 +174,7 @@ export default function Timeline() {
                         className="overflow-hidden border-l-2 border-accent pl-4"
                       >
                         <p className="font-mono text-accent/90 italic text-sm">
-                          "{phase.insight}"
+                          &ldquo;{phase.insight}&rdquo;
                         </p>
                       </motion.div>
                     )}
@@ -178,31 +193,66 @@ export default function Timeline() {
       </div>
 
       {/* Evolution Summary Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        className="mt-32 max-w-5xl mx-auto pt-16 border-t border-accent/10"
+      <div 
+        ref={summaryRef}
+        className="mt-32 max-w-5xl mx-auto pt-16 border-t border-accent/10 pb-8"
       >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-2 relative">
-          {/* Desktop connecting line */}
-          <div className="hidden md:block absolute top-[11px] left-8 right-8 h-[2px] bg-accent/20 -z-10" />
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12 md:gap-2 relative pl-8 md:pl-0">
           
-          {summaryStages.map((stage, idx) => (
-            <div key={idx} className="flex flex-col md:flex-row items-center gap-4 text-center">
-              {idx > 0 && (
-                <IconArrowRight size={20} className="md:hidden text-accent/50" />
-              )}
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-6 h-6 rounded-full bg-accent flex-shrink-0" />
-                <span className="font-mono text-text-primary text-xs md:text-sm tracking-wide max-w-[150px]">
-                  {stage}
+          {/* Desktop connecting line */}
+          <div className="hidden md:block absolute top-[11px] left-4 right-4 h-[2px] bg-accent/20 -z-10" />
+          <motion.div 
+            className="hidden md:block absolute top-[11px] left-4 right-4 h-[2px] bg-accent -z-10 origin-left" 
+            initial={{ scaleX: 0 }}
+            animate={isSummaryInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+
+          {/* Mobile connecting line */}
+          <div className="md:hidden absolute left-[11px] top-4 bottom-4 w-[2px] bg-accent/20 -z-10" />
+          <motion.div 
+            className="md:hidden absolute left-[11px] top-4 bottom-4 w-[2px] bg-accent -z-10 origin-top" 
+            initial={{ scaleY: 0 }}
+            animate={isSummaryInView ? { scaleY: 1 } : { scaleY: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+          
+          {summaryStages.map((stage, idx) => {
+            const isLast = idx === summaryStages.length - 1;
+            const delay = (idx / (summaryStages.length - 1)) * 1.5;
+
+            return (
+              <div 
+                key={idx} 
+                className="flex flex-row md:flex-col items-center gap-6 md:gap-4 text-left md:text-center relative z-10 group cursor-pointer"
+                onClick={() => handleScrollToPhase(stage.targetId)}
+              >
+                <motion.div 
+                  initial={{ backgroundColor: "rgba(26,30,20,1)", borderColor: "rgba(251,191,36,0.5)" }}
+                  animate={isSummaryInView ? {
+                    backgroundColor: isLast ? "rgba(251,191,36,1)" : "rgba(26,30,20,1)",
+                    borderColor: "rgba(251,191,36,1)",
+                    boxShadow: isLast 
+                      ? ["0px 0px 0px rgba(251,191,36,0)", "0px 0px 20px rgba(251,191,36,0.8)", "0px 0px 15px rgba(251,191,36,0.5)"] 
+                      : ["0px 0px 0px rgba(251,191,36,0)", "0px 0px 15px rgba(251,191,36,0.8)", "0px 0px 0px rgba(251,191,36,0)"]
+                  } : {}}
+                  transition={{ duration: 0.8, delay: isSummaryInView ? delay : 0 }}
+                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 border-2 transition-transform group-hover:scale-110"
+                >
+                  {isLast ? (
+                    <IconCheck size={14} className="text-[#1A1E14]" />
+                  ) : (
+                    <span className="text-[10px] font-mono text-accent">{idx + 1}</span>
+                  )}
+                </motion.div>
+                <span className="font-mono text-[#9ca3af] text-xs md:text-sm tracking-wide max-w-[150px] group-hover:text-accent transition-colors">
+                  {stage.label}
                 </span>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
