@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🌐 Project Description
 
-## Getting Started
+This is my personal portfolio website, built to showcase who I am, what I create, and how I approach technology as a Creative Technologist working at the intersection of design, media, and AI-driven products.
 
-First, run the development server:
+🔗 Live Site: https://shuban-portfolio.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+My portfolio is designed as a fully static, client-side application that focuses on performance, simplicity, and a premium user experience. Instead of relying on heavy backend systems or data tracking, everything runs directly in the browser — making it fast, secure, and privacy-friendly.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The goal wasn’t just to “display projects,” but to create an experience that reflects my thinking and attention to detail.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+✨ Key Highlights
 
-## Learn More
+🎯 Immersive UI Experience
+A smooth and interactive interface with custom cursor, fluid scrolling, and subtle animations that make navigation feel natural and engaging.
 
-To learn more about Next.js, take a look at the following resources:
+🧩 Live Project Previews
+Users can interact with my projects directly inside the portfolio using embedded previews — no need to open new tabs.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📱 Fully Responsive Design
+Optimized across all devices — mobile, tablet, desktop, and widescreen — ensuring consistency everywhere.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🎨 Modern Visual Design
+Includes animated backgrounds, soft gradients, and layered elements to create a clean yet dynamic aesthetic.
 
-## Deploy on Vercel
+🔐 Privacy-First Approach
+No backend, no tracking, no unnecessary data collection — everything runs locally in the browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Framework: Next.js 14
+
+Styling: Tailwind CSS
+
+Animations: Framer Motion
+
+Smooth Scrolling: Lenis
+
+Icons: Tabler Icons
+
+Fonts: Playfair Display + DM Mono
+
+Deployment: Vercel
+
+💡 What Makes This Project Special
+
+This portfolio isn’t just a collection of projects — it represents my development philosophy:
+
+Build fast and lightweight applications ⚡
+
+Focus on user experience and visual storytelling 🎬
+
+Keep systems simple, clean, and intentional 🧠
+
+Prioritize privacy and transparency 🔐
+
+🧪 Featured Work Inside the Portfolio
+
+Data Peel → A privacy-first tool that removes hidden metadata from media files directly in the browser
+
+ConCom → A client-side file converter and compressor with zero uploads
+
+🎯 Conclusion
+
+This project reflects how I combine design, engineering, and problem-solving to create meaningful digital experiences. It’s not just about functionality — it’s about crafting products that feel intuitive, efficient, and thoughtfully built.
