@@ -6,7 +6,7 @@ This is my personal portfolio website, built to showcase who I am, what I create
 
 🚀 Overview
 
-My portfolio is designed as a fully static, client-side application that focuses on performance, simplicity, and a premium user experience. Instead of relying on heavy backend systems or data tracking, everything runs directly in the browser — making it fast, secure, and privacy-friendly.
+My portfolio is designed as a fully static, client-side application that focuses on performance, simplicity, and a premium user experience. Instead of relying on heavy backend systems or data tracking, everything runs directly in the browser  making it fast, secure, and privacy-friendly.
 
 The goal wasn’t just to “display projects,” but to create an experience that reflects my thinking and attention to detail.
 
@@ -16,16 +16,16 @@ The goal wasn’t just to “display projects,” but to create an experience th
 A smooth and interactive interface with custom cursor, fluid scrolling, and subtle animations that make navigation feel natural and engaging.
 
 🧩 Live Project Previews
-Users can interact with my projects directly inside the portfolio using embedded previews — no need to open new tabs.
+Users can interact with my projects directly inside the portfolio using embedded previews no need to open new tabs.
 
 📱 Fully Responsive Design
-Optimized across all devices — mobile, tablet, desktop, and widescreen — ensuring consistency everywhere.
+Optimized across all devices mobile, tablet, desktop, and widescreen ensuring consistency everywhere.
 
 🎨 Modern Visual Design
 Includes animated backgrounds, soft gradients, and layered elements to create a clean yet dynamic aesthetic.
 
 🔐 Privacy-First Approach
-No backend, no tracking, no unnecessary data collection — everything runs locally in the browser.
+No backend, no tracking, no unnecessary data collection everything runs locally in the browser.
 
 🛠️ Tech Stack
 
@@ -45,7 +45,7 @@ Deployment: Vercel
 
 💡 What Makes This Project Special
 
-This portfolio isn’t just a collection of projects — it represents my development philosophy:
+This portfolio isn’t just a collection of projects it represents my development philosophy:
 
 Build fast and lightweight applications ⚡
 
