@@ -2,14 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --black:  #000000;
+  --navy:   #14213D;
+  --amber:  #FCA311;
+  --grey:   #E5E5E5;
+  --white:  #FFFFFF;
+}
+
 @layer base {
   body {
-    @apply bg-background text-text-muted antialiased w-full overflow-x-hidden relative min-h-screen z-0;
+    @apply bg-black text-grey antialiased w-full overflow-x-hidden relative min-h-screen z-0;
     cursor: none; /* Custom cursor is enabled */
   }
 
   ::selection {
-    @apply bg-accent/30 text-accent;
+    background-color: rgba(252, 163, 17, 0.3);
+    color: #FCA311;
   }
 }
 

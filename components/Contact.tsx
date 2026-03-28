@@ -1,7 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { IconMail, IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import {
+  IconMail,
+  IconBrandGithub,
+  IconBrandLinkedin,
+} from "@tabler/icons-react";
 
 export default function Contact() {
   return (
@@ -13,42 +17,53 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="flex flex-col items-center gap-6"
       >
-        <span className="font-mono text-accent text-sm tracking-widest uppercase mb-4">
+        <span className="font-mono text-amber text-sm tracking-widest uppercase mb-4">
           {`// contact`}
         </span>
 
         <h2 className="font-playfair font-bold text-5xl md:text-7xl text-white">
           Let&apos;s build something.
         </h2>
-        
-        <p className="font-mono font-light text-text-muted text-lg max-w-xl mx-auto mb-12">
+
+        <p className="font-mono font-light text-grey text-lg max-w-xl mx-auto mb-12">
           Open to collaborations, freelance work, and interesting ideas.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-2xl">
-          <a 
+          <a
             href="mailto:shuban1227@gmail.com"
-            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-muted hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
+            className="group flex items-center justify-center gap-3 px-6 py-4 border border-amber text-amber rounded-sm hover:bg-amber hover:text-black transition-all duration-300 font-mono text-sm"
           >
-            <IconMail size={20} className="text-accent group-hover:text-background transition-colors" />
+            <IconMail
+              size={20}
+              className="text-amber group-hover:text-black transition-colors"
+            />
             shuban1227@gmail.com
           </a>
-          
-          <a 
+
+          <a
             href="https://github.com/shuban2007"
-            target="_blank" rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-muted hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center gap-3 px-6 py-4 border border-amber text-amber rounded-sm hover:bg-amber hover:text-black transition-all duration-300 font-mono text-sm"
           >
-            <IconBrandGithub size={20} className="text-accent group-hover:text-background transition-colors" />
+            <IconBrandGithub
+              size={20}
+              className="text-amber group-hover:text-black transition-colors"
+            />
             github.com/shuban2007
           </a>
-          
-          <a 
+
+          <a
             href="https://www.linkedin.com/in/shuban-shinde-58437838b"
-            target="_blank" rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-muted hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-center gap-3 px-6 py-4 border border-amber text-amber rounded-sm hover:bg-amber hover:text-black transition-all duration-300 font-mono text-sm"
           >
-            <IconBrandLinkedin size={20} className="text-accent group-hover:text-background transition-colors" />
+            <IconBrandLinkedin
+              size={20}
+              className="text-amber group-hover:text-black transition-colors"
+            />
             LinkedIn
           </a>
         </div>

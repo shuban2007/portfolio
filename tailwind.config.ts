@@ -9,11 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Legacy aliases kept for any remaining references
         background: "#000000",
         surface: "#14213D",
         accent: "#FCA311",
         "text-primary": "#FFFFFF",
         "text-muted": "#E5E5E5",
+        // New named palette
+        black:  "#000000",
+        navy:   "#14213D",
+        amber:  "#FCA311",
+        grey:   "#E5E5E5",
+        white:  "#FFFFFF",
       },
       screens: {
         'sm': '640px',

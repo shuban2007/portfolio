@@ -3,22 +3,31 @@
 import { motion, Variants } from "framer-motion";
 
 const tags = [
-  "AI & Data Science", "Privacy-First", "Creative Automation", 
-  "Motion Graphics", "UI Design", "Prompt Engineering", 
-  "Open Source", "Hackathon Winner"
+  "AI & Data Science",
+  "Privacy-First",
+  "Creative Automation",
+  "Motion Graphics",
+  "UI Design",
+  "Prompt Engineering",
+  "Open Source",
+  "Hackathon Winner",
 ];
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.08 }
-  }
+    transition: { staggerChildren: 0.08 },
+  },
 };
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100 },
+  },
 };
 
 export default function About() {
@@ -31,24 +40,41 @@ export default function About() {
         variants={containerVariants}
         className="flex flex-col gap-8"
       >
-        <motion.span variants={itemVariants} className="font-mono text-accent text-sm tracking-widest uppercase">
+        <motion.span
+          variants={itemVariants}
+          className="font-mono text-amber text-sm tracking-widest uppercase"
+        >
           {`// about`}
         </motion.span>
-        
-        <motion.h2 variants={itemVariants} className="font-playfair font-bold text-5xl md:text-7xl mb-4 text-white">
+
+        <motion.h2
+          variants={itemVariants}
+          className="font-playfair font-bold text-5xl md:text-7xl mb-4 text-white"
+        >
           Design. Code. Ship.
         </motion.h2>
-        
-        <motion.p variants={itemVariants} className="font-mono font-light text-text-muted text-lg md:text-xl leading-relaxed">
-          I&apos;m Shuban Shinde — a B.Tech student in Artificial Intelligence & Data Science at Thakur College of Engineering and Technology. I&apos;m a creative developer with expertise in visual design, motion graphics, and digital media production. Hackathon winner with a passion for AI application development and privacy-centric software solutions. I turn ideas into functional, visually compelling products.
+
+        <motion.p
+          variants={itemVariants}
+          className="font-mono font-light text-grey text-lg md:text-xl leading-relaxed"
+        >
+          I&apos;m Shuban Shinde — a B.Tech student in Artificial Intelligence
+          &amp; Data Science at Thakur College of Engineering and Technology.
+          I&apos;m a creative developer with expertise in visual design, motion
+          graphics, and digital media production. Hackathon winner with a
+          passion for AI application development and privacy-centric software
+          solutions. I turn ideas into functional, visually compelling products.
         </motion.p>
 
-        <motion.div variants={containerVariants} className="flex flex-wrap gap-3 mt-4">
+        <motion.div
+          variants={containerVariants}
+          className="flex flex-wrap gap-3 mt-4"
+        >
           {tags.map((tag) => (
-            <motion.span 
+            <motion.span
               key={tag}
               variants={itemVariants}
-              className="px-4 py-2 bg-surface text-text-muted font-mono text-sm border border-accent/20 rounded-sm hover:-translate-y-1 hover:text-accent hover:border-accent hover:glow-amber transition-all duration-300"
+              className="px-4 py-2 bg-navy text-grey font-mono text-sm border border-amber/30 rounded-sm hover:-translate-y-1 hover:text-amber hover:border-amber hover:glow-amber transition-all duration-300"
             >
               {tag}
             </motion.span>
