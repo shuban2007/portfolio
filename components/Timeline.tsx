@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from "framer-motion";
-import { IconPlus, IconMinus, IconCheck } from "@tabler/icons-react";
+import { IconPlus, IconMinus } from "@tabler/icons-react";
 
 const phases = [
   {
@@ -100,10 +100,10 @@ export default function Timeline() {
         <span className="font-mono text-accent text-sm tracking-widest uppercase">
           {`// journey`}
         </span>
-        <h2 className="font-playfair font-bold text-4xl md:text-6xl text-text-primary">
+        <h2 className="font-playfair font-bold text-4xl md:text-6xl text-white">
           My AI Dev Journey.
         </h2>
-        <p className="font-mono text-[#9ca3af] text-base md:text-lg max-w-2xl mx-auto">
+        <p className="font-mono text-text-muted text-base md:text-lg max-w-2xl mx-auto">
           From curiosity to AI-native development — every phase shaped how I build today.
         </p>
       </div>
@@ -136,54 +136,57 @@ export default function Timeline() {
                 <div className="hidden md:block md:w-[45%]" />
 
                 {/* Timeline Number / Dot */}
-                <div className="absolute left-0 translate-x-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-accent bg-[#1A1E14] text-accent font-mono font-bold text-lg z-20">
+                <div className="absolute left-0 translate-x-0 md:left-1/2 md:-translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border border-accent bg-background text-accent font-mono font-bold text-lg z-20">
                   {phase.id}
                 </div>
 
                 {/* Card */}
                 <motion.div
                   id={`phase-${phase.id}`}
-                  className={`w-[calc(100%-4rem)] ml-auto md:ml-0 md:w-[45%] bg-[#1A1E14] border rounded-sm p-6 md:p-8 cursor-pointer relative transition-colors duration-500 ${
-                    flashingId === phase.id ? "border-accent shadow-[0_0_30px_rgba(251,191,36,0.4)]" : "border-accent/20"
+                  className={`w-[calc(100%-4rem)] ml-auto md:ml-0 md:w-[45%] bg-surface border rounded-sm cursor-pointer transition-colors duration-500 ${
+                    flashingId === phase.id ? "border-accent shadow-[0_0_30px_rgba(252,163,17,0.4)]" : "border-[rgba(252,163,17,0.25)]"
                   }`}
-                  whileHover={{ y: -4, boxShadow: flashingId === phase.id ? "0 0 30px rgba(251,191,36,0.4)" : "0 0 15px rgba(251,191,36,0.1)" }}
+                  whileHover={{ y: -4, boxShadow: flashingId === phase.id ? "0 0 30px rgba(252,163,17,0.4)" : "0 0 15px rgba(252,163,17,0.1)" }}
                   onClick={() => setExpandedId(isExpanded ? null : phase.id)}
                 >
-                  <div className="absolute top-6 right-6 text-accent">
-                    {isExpanded ? <IconMinus size={20} /> : <IconPlus size={20} />}
-                  </div>
+                  <div className="flex flex-col gap-3 p-6 md:p-8 min-h-[280px]">
+                    <div className="flex justify-between items-start">
+                      <span className="font-mono text-accent text-xs uppercase tracking-widest">
+                        {phase.date}
+                      </span>
+                      <div className="text-accent">
+                        {isExpanded ? <IconMinus size={20} /> : <IconPlus size={20} />}
+                      </div>
+                    </div>
+                    
+                    <h3 className="font-playfair font-bold text-2xl text-white pr-4">
+                      {phase.title}
+                    </h3>
+                    
+                    <p className="font-mono text-text-muted text-sm leading-relaxed">
+                      {phase.desc}
+                    </p>
 
-                  <span className="font-mono text-accent text-xs uppercase tracking-widest block mb-2">
-                    {phase.date}
-                  </span>
-                  
-                  <h3 className="font-playfair font-bold text-2xl text-text-primary mb-4 pr-8">
-                    {phase.title}
-                  </h3>
-                  
-                  <p className="font-mono text-[#9ca3af] text-sm leading-relaxed mb-8">
-                    {phase.desc}
-                  </p>
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="overflow-hidden border-l-2 border-accent pl-4 mb-4"
+                        >
+                          <p className="font-mono text-text-muted italic text-sm">
+                            &ldquo;{phase.insight}&rdquo;
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                        animate={{ opacity: 1, height: "auto", marginTop: 24 }}
-                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                        className="overflow-hidden border-l-2 border-accent pl-4"
-                      >
-                        <p className="font-mono text-accent/90 italic text-sm">
-                          &ldquo;{phase.insight}&rdquo;
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <div className="absolute bottom-6 right-6 bg-black/30 border border-accent/30 rounded-full px-3 py-1">
-                    <span className="font-mono text-text-primary text-[10px] uppercase tracking-wider">
-                      {phase.tag}
-                    </span>
+                    <div className="mt-auto pt-2">
+                      <span className="inline-block bg-background border border-accent/30 rounded-full px-3 py-1 font-mono text-text-muted text-[10px] uppercase tracking-wider">
+                        {phase.tag}
+                      </span>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -197,60 +200,109 @@ export default function Timeline() {
         ref={summaryRef}
         className="mt-32 max-w-5xl mx-auto pt-16 border-t border-accent/10 pb-8"
       >
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-12 md:gap-2 relative pl-8 md:pl-0">
-          
-          {/* Desktop connecting line */}
-          <div className="hidden md:block absolute top-[11px] left-4 right-4 h-[2px] bg-accent/20 -z-10" />
+        {/* Desktop Layout */}
+        <div className="hidden md:grid grid-cols-5 relative" style={{ paddingTop: "12px", paddingBottom: "40px" }}>
+          {/* Desktop connecting line background */}
+          <div 
+            className="absolute h-[2px] bg-accent/20" 
+            style={{ top: "23px", left: "10%", right: "10%" }} 
+          />
+          {/* Desktop connecting line animated fill */}
           <motion.div 
-            className="hidden md:block absolute top-[11px] left-4 right-4 h-[2px] bg-accent -z-10 origin-left" 
+            className="absolute h-[2px] bg-accent origin-left" 
+            style={{ top: "23px", left: "10%", right: "10%" }}
             initial={{ scaleX: 0 }}
             animate={isSummaryInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
           />
 
-          {/* Mobile connecting line */}
-          <div className="md:hidden absolute left-[11px] top-4 bottom-4 w-[2px] bg-accent/20 -z-10" />
-          <motion.div 
-            className="md:hidden absolute left-[11px] top-4 bottom-4 w-[2px] bg-accent -z-10 origin-top" 
-            initial={{ scaleY: 0 }}
-            animate={isSummaryInView ? { scaleY: 1 } : { scaleY: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-          
           {summaryStages.map((stage, idx) => {
             const isLast = idx === summaryStages.length - 1;
             const delay = (idx / (summaryStages.length - 1)) * 1.5;
+            const dotSize = isLast ? "w-7 h-7" : "w-5 h-5";
 
             return (
               <div 
                 key={idx} 
-                className="flex flex-row md:flex-col items-center gap-6 md:gap-4 text-left md:text-center relative z-10 group cursor-pointer"
+                className="flex flex-col items-center gap-3 relative z-10 group cursor-pointer"
                 onClick={() => handleScrollToPhase(stage.targetId)}
               >
                 <motion.div 
-                  initial={{ backgroundColor: "rgba(26,30,20,1)", borderColor: "rgba(251,191,36,0.5)" }}
+                  initial={{ 
+                    backgroundColor: "rgba(252,163,17,0.3)", 
+                    borderColor: "rgba(252,163,17,0.5)",
+                    boxShadow: "0px 0px 0px rgba(252,163,17,0)"
+                  }}
                   animate={isSummaryInView ? {
-                    backgroundColor: isLast ? "rgba(251,191,36,1)" : "rgba(26,30,20,1)",
-                    borderColor: "rgba(251,191,36,1)",
+                    backgroundColor: isLast ? "rgba(252,163,17,1)" : "rgba(252,163,17,0.8)",
+                    borderColor: "rgba(252,163,17,1)",
                     boxShadow: isLast 
-                      ? ["0px 0px 0px rgba(251,191,36,0)", "0px 0px 20px rgba(251,191,36,0.8)", "0px 0px 15px rgba(251,191,36,0.5)"] 
-                      : ["0px 0px 0px rgba(251,191,36,0)", "0px 0px 15px rgba(251,191,36,0.8)", "0px 0px 0px rgba(251,191,36,0)"]
+                      ? ["0px 0px 0px rgba(252,163,17,0)", "0px 0px 25px rgba(252,163,17,0.9)", "0px 0px 18px rgba(252,163,17,0.6)"] 
+                      : ["0px 0px 0px rgba(252,163,17,0)", "0px 0px 15px rgba(252,163,17,0.8)", "0px 0px 0px rgba(252,163,17,0)"]
                   } : {}}
                   transition={{ duration: 0.8, delay: isSummaryInView ? delay : 0 }}
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 border-2 transition-transform group-hover:scale-110"
-                >
-                  {isLast ? (
-                    <IconCheck size={14} className="text-[#1A1E14]" />
-                  ) : (
-                    <span className="text-[10px] font-mono text-accent">{idx + 1}</span>
-                  )}
-                </motion.div>
-                <span className="font-mono text-[#9ca3af] text-xs md:text-sm tracking-wide max-w-[150px] group-hover:text-accent transition-colors">
+                  className={`${dotSize} rounded-full flex-shrink-0 border-2 transition-transform group-hover:scale-125`}
+                />
+                <span className="font-mono text-text-muted text-[11px] uppercase tracking-widest text-center leading-tight group-hover:text-accent transition-colors">
                   {stage.label}
                 </span>
               </div>
             );
           })}
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="md:hidden relative pl-6">
+          {/* Mobile connecting line background */}
+          <div 
+            className="absolute w-[2px] bg-accent/20" 
+            style={{ left: "10px", top: "10px", bottom: "10px" }} 
+          />
+          {/* Mobile connecting line animated fill */}
+          <motion.div 
+            className="absolute w-[2px] bg-accent origin-top" 
+            style={{ left: "10px", top: "10px", bottom: "10px" }}
+            initial={{ scaleY: 0 }}
+            animate={isSummaryInView ? { scaleY: 1 } : { scaleY: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
+
+          <div className="flex flex-col gap-10">
+            {summaryStages.map((stage, idx) => {
+              const isLast = idx === summaryStages.length - 1;
+              const delay = (idx / (summaryStages.length - 1)) * 1.5;
+              const dotSize = isLast ? "w-7 h-7" : "w-5 h-5";
+
+              return (
+                <div 
+                  key={idx} 
+                  className="flex flex-row items-center gap-4 relative z-10 group cursor-pointer"
+                  style={{ marginLeft: isLast ? "-3px" : "0" }}
+                  onClick={() => handleScrollToPhase(stage.targetId)}
+                >
+                  <motion.div 
+                    initial={{ 
+                      backgroundColor: "rgba(252,163,17,0.3)", 
+                      borderColor: "rgba(252,163,17,0.5)",
+                      boxShadow: "0px 0px 0px rgba(252,163,17,0)"
+                    }}
+                    animate={isSummaryInView ? {
+                      backgroundColor: isLast ? "rgba(252,163,17,1)" : "rgba(252,163,17,0.8)",
+                      borderColor: "rgba(252,163,17,1)",
+                      boxShadow: isLast 
+                        ? ["0px 0px 0px rgba(252,163,17,0)", "0px 0px 25px rgba(252,163,17,0.9)", "0px 0px 18px rgba(252,163,17,0.6)"] 
+                        : ["0px 0px 0px rgba(252,163,17,0)", "0px 0px 15px rgba(252,163,17,0.8)", "0px 0px 0px rgba(252,163,17,0)"]
+                    } : {}}
+                    transition={{ duration: 0.8, delay: isSummaryInView ? delay : 0 }}
+                    className={`${dotSize} rounded-full flex-shrink-0 border-2 transition-transform group-hover:scale-125`}
+                  />
+                  <span className="font-mono text-text-muted text-xs uppercase tracking-widest group-hover:text-accent transition-colors">
+                    {stage.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

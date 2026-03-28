@@ -17,7 +17,7 @@ export default function Contact() {
           {`// contact`}
         </span>
 
-        <h2 className="font-playfair font-bold text-5xl md:text-7xl">
+        <h2 className="font-playfair font-bold text-5xl md:text-7xl text-white">
           Let&apos;s build something.
         </h2>
         
@@ -28,7 +28,7 @@ export default function Contact() {
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-2xl">
           <a 
             href="mailto:shuban1227@gmail.com"
-            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-primary hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
+            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-muted hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
           >
             <IconMail size={20} className="text-accent group-hover:text-background transition-colors" />
             shuban1227@gmail.com
@@ -37,7 +37,7 @@ export default function Contact() {
           <a 
             href="https://github.com/shuban2007"
             target="_blank" rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-primary hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
+            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-muted hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
           >
             <IconBrandGithub size={20} className="text-accent group-hover:text-background transition-colors" />
             github.com/shuban2007
@@ -46,7 +46,7 @@ export default function Contact() {
           <a 
             href="https://www.linkedin.com/in/shuban-shinde-58437838b"
             target="_blank" rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-primary hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
+            className="group flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 rounded-sm text-text-muted hover:bg-accent hover:text-background transition-all duration-300 font-mono text-sm"
           >
             <IconBrandLinkedin size={20} className="text-accent group-hover:text-background transition-colors" />
             LinkedIn

@@ -57,14 +57,14 @@ export default function Nav() {
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/92 backdrop-blur-md py-4 shadow-lg shadow-black/20" : "bg-transparent py-6"
+        scrolled ? "bg-[rgba(0,0,0,0.92)] backdrop-blur-md py-4 shadow-lg shadow-black/20" : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link 
           href="#top" 
           onClick={(e) => handleSmoothScroll(e, "#top")}
-          className="font-playfair font-bold text-2xl tracking-tighter hover:text-accent transition-colors duration-300"
+          className="font-playfair font-bold text-2xl tracking-tighter text-white hover:text-accent transition-colors duration-300"
         >
           Shuban Shinde
         </Link>
@@ -77,7 +77,7 @@ export default function Nav() {
               href={link.href}
               onClick={(e) => handleSmoothScroll(e, link.href)}
               className={`font-mono text-sm transition-colors duration-300 hover:text-accent ${
-                activeSection === link.href ? "text-accent" : "text-text-primary"
+                activeSection === link.href ? "text-accent" : "text-text-muted"
               }`}
             >
               {link.name}
@@ -87,7 +87,7 @@ export default function Nav() {
 
         {/* Mobile Nav Toggle */}
         <button
-          className="md:hidden text-text-primary hover:text-accent transition-colors z-50"
+          className="md:hidden text-text-muted hover:text-accent transition-colors z-50"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -103,7 +103,7 @@ export default function Nav() {
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed top-0 left-0 w-full h-screen bg-background/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 -z-10"
+            className="md:hidden fixed top-0 left-0 w-full h-screen bg-surface/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 -z-10"
           >
             {links.map((link) => (
               <Link
@@ -111,7 +111,7 @@ export default function Nav() {
                 href={link.href}
                 onClick={(e) => handleSmoothScroll(e, link.href)}
                 className={`font-mono text-2xl tracking-wide transition-colors ${
-                  activeSection === link.href ? "text-accent" : "text-text-primary"
+                  activeSection === link.href ? "text-accent" : "text-text-muted"
                 }`}
               >
                 {link.name}

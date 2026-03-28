@@ -26,7 +26,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="font-playfair font-black text-[clamp(3.5rem,8vw,9rem)] leading-[1.1] tracking-tight mb-6"
+          className="font-playfair font-black text-[clamp(3.5rem,8vw,9rem)] leading-[1.1] tracking-tight mb-6 text-white"
         >
           Creative <br className="sm:hidden" /> Technologist.
         </motion.h1>

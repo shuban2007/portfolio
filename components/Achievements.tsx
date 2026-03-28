@@ -20,7 +20,7 @@ export default function Achievements() {
         <div className="relative group p-8 md:p-12 bg-surface border border-accent rounded-sm overflow-hidden glow-amber hover:glow-amber-strong transition-all duration-500">
           
           {/* Looping Shimmer Sweep Animation */}
-          <div className="absolute inset-0 -translate-x-[150%] animate-shimmer bg-accent/20 shimmer-mask pointer-events-none" />
+          <div className="absolute inset-0 -translate-x-[150%] animate-shimmer bg-[rgba(252,163,17,0.15)] shimmer-mask pointer-events-none" />
 
           <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8">
             <div className="p-4 bg-background border border-accent/30 rounded-full flex-shrink-0">
@@ -28,7 +28,7 @@ export default function Achievements() {
             </div>
             
             <div className="text-center md:text-left">
-              <h3 className="font-playfair font-bold text-3xl md:text-4xl text-text-primary mb-3">
+              <h3 className="font-playfair font-bold text-3xl md:text-4xl text-white mb-3">
                 Winner — <br className="md:hidden" />ML-2 Web-A-Thon Hackathon
               </h3>
               <p className="font-mono text-text-muted text-base md:text-lg">

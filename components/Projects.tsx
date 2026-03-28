@@ -76,16 +76,18 @@ function ProjectCard({ project, isMobile, index }: { project: typeof projects[0]
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group flex flex-col bg-surface border border-accent/20 rounded-sm overflow-hidden hover:-translate-y-1.5 hover:border-accent hover:glow-amber transition-all duration-300"
+      className="group flex flex-col bg-surface border border-[rgba(252,163,17,0.2)] rounded-sm overflow-hidden hover:-translate-y-1.5 hover:border-accent hover:glow-amber transition-all duration-300"
     >
       <div className="p-6 md:p-8 flex-grow flex flex-col min-h-[420px]">
         {/* Toggle / Headers */}
         <div className="flex justify-between items-start mb-6">
-          <h3 className="font-playfair font-bold text-3xl text-text-primary">{project.name}</h3>
+          <h3 className="font-playfair font-bold text-3xl text-white">{project.name}</h3>
           {!isMobile && (
             <button 
               onClick={toggleView}
-              className="px-4 py-1.5 border border-accent/50 text-accent font-mono text-xs hover:bg-accent hover:text-background transition-colors rounded-sm"
+              className={`px-4 py-1.5 border border-accent/50 font-mono text-xs rounded-sm transition-colors ${
+                viewState === "preview" ? "bg-accent text-background" : "text-accent hover:bg-accent hover:text-background"
+              }`}
             >
               {viewState === "details" ? "Live Preview" : "Details"}
             </button>
@@ -104,14 +106,14 @@ function ProjectCard({ project, isMobile, index }: { project: typeof projects[0]
                 transition={{ duration: 0.2 }}
                 className="flex flex-col h-full"
               >
-                <p className="font-playfair italic text-accent text-xl mb-4">&quot;{project.tagline}&quot;</p>
+                <p className="font-playfair italic text-white text-xl mb-4">&quot;{project.tagline}&quot;</p>
                 <p className="font-mono font-light text-text-muted text-base leading-relaxed mb-6">
                   {project.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tags.map(tag => (
-                    <span key={tag} className="px-2 py-1 bg-background text-text-muted font-mono text-xs border border-surface rounded-sm">
+                    <span key={tag} className="px-2 py-1 bg-background text-text-muted font-mono text-xs border border-accent/20 rounded-sm">
                       {tag}
                     </span>
                   ))}
@@ -124,7 +126,7 @@ function ProjectCard({ project, isMobile, index }: { project: typeof projects[0]
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full h-[320px] md:h-[420px] lg:h-[360px] bg-background border border-accent/30 rounded-sm overflow-hidden"
+                className="relative w-full h-[320px] md:h-[420px] lg:h-[360px] bg-background border border-surface rounded-sm overflow-hidden"
               >
                 {/* Loader */}
                 {!iframeLoaded && (
@@ -159,7 +161,7 @@ function ProjectCard({ project, isMobile, index }: { project: typeof projects[0]
 
         {/* Footer info/buttons */}
         {viewState === "preview" && !isMobile ? (
-          <p className="text-xs font-mono text-text-muted mt-auto pt-4 border-t border-accent/10">
+          <p className="text-xs font-mono text-text-muted/60 mt-auto pt-4 border-t border-accent/10">
             Preview loads the live site — all processing stays in your browser.
           </p>
         ) : (
@@ -187,7 +189,7 @@ function ProjectCard({ project, isMobile, index }: { project: typeof projects[0]
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-surface text-text-primary font-mono text-sm rounded-sm hover:border-accent/50 hover:text-accent transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-transparent border border-surface text-text-muted font-mono text-sm rounded-sm hover:border-accent/50 hover:text-accent transition-colors"
             >
               GitHub <IconArrowUpRight size={16} />
             </a>

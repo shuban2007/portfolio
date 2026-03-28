@@ -41,7 +41,7 @@ export default function CustomCursor() {
         transition={{ type: "tween", ease: "backOut", duration: 0.05 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-accent rounded-full pointer-events-none z-[9998] transform -translate-x-1/2 -translate-y-1/2 custom-cursor"
+        className="fixed top-0 left-0 w-8 h-8 border border-accent/50 rounded-full pointer-events-none z-[9998] transform -translate-x-1/2 -translate-y-1/2 custom-cursor"
         animate={{ x: mousePosition.x - 16, y: mousePosition.y - 16 }}
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.5 }}
       />

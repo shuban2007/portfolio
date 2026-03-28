@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-text-primary antialiased w-full overflow-x-hidden relative min-h-screen z-0;
+    @apply bg-background text-text-muted antialiased w-full overflow-x-hidden relative min-h-screen z-0;
     cursor: none; /* Custom cursor is enabled */
   }
 
@@ -23,11 +23,11 @@
 @layer utilities {
   /* Soft amber bloom behind card */
   .glow-amber {
-    box-shadow: 0 0 20px rgba(240, 165, 0, 0.15);
+    box-shadow: 0 0 20px rgba(252, 163, 17, 0.15);
   }
   
   .glow-amber-strong {
-    box-shadow: 0 0 24px rgba(240, 165, 0, 0.4);
+    box-shadow: 0 0 24px rgba(252, 163, 17, 0.4);
   }
 
   .shimmer-mask {

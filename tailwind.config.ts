@@ -9,11 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0D0F0A",
-        surface: "#1A1E14",
-        accent: "#F0A500",
-        "text-primary": "#F4EDD8",
-        "text-muted": "#8FAF72",
+        background: "#000000",
+        surface: "#14213D",
+        accent: "#FCA311",
+        "text-primary": "#FFFFFF",
+        "text-muted": "#E5E5E5",
       },
       screens: {
         'sm': '640px',

@@ -35,11 +35,11 @@ export default function About() {
           {`// about`}
         </motion.span>
         
-        <motion.h2 variants={itemVariants} className="font-playfair font-bold text-5xl md:text-7xl mb-4">
+        <motion.h2 variants={itemVariants} className="font-playfair font-bold text-5xl md:text-7xl mb-4 text-white">
           Design. Code. Ship.
         </motion.h2>
         
-        <motion.p variants={itemVariants} className="font-mono font-light text-text-primary text-lg md:text-xl leading-relaxed">
+        <motion.p variants={itemVariants} className="font-mono font-light text-text-muted text-lg md:text-xl leading-relaxed">
           I&apos;m Shuban Shinde — a B.Tech student in Artificial Intelligence & Data Science at Thakur College of Engineering and Technology. I&apos;m a creative developer with expertise in visual design, motion graphics, and digital media production. Hackathon winner with a passion for AI application development and privacy-centric software solutions. I turn ideas into functional, visually compelling products.
         </motion.p>
 
